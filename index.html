@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Rüdiger Erdmann – Bio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- SEO: Seitenbeschreibung -->
+  <meta name="description" content="Rüdiger Erdmann Bio – Kurzprofil und zentrale Online-Profile von Rüdiger Erdmann aus Schongau/Bayern mit Links zu Bluesky, X, Facebook und GitHub.">
+
+  <!-- SEO: Suchbegriffe -->
+  <meta name="keywords" content="Rüdiger, Erdmann, Bayern, Schongau, Rüdiger Erdmann, Ruediger Erdmann Bayern, Ruediger Erdmann Schongau">
+
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background: #f5f5f5;
+      color: #222;
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #020617;
+        color: #e5e7eb;
+      }
+      .container {
+        background: #020617;
+        border: 1px solid #1f2937;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+      }
+      .social-link {
+        border-color: #1f2937;
+        background: #020617;
+      }
+      .social-link:hover {
+        background: #020617;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.7);
+      }
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 2.5rem 2.25rem 2.75rem;
+      border-radius: 24px;
+      box-shadow:
+        0 30px 80px rgba(15,23,42,0.14),
+        0 0 0 1px rgba(15,23,42,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+    .container::before {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(59,130,246,0.16), transparent 60%),
+        radial-gradient(circle at 100% 0%, rgba(236,72,153,0.12), transparent 55%),
+        radial-gradient(circle at 50% 120%, rgba(45,212,191,0.14), transparent 55%);
+      opacity: 0.85;
+      pointer-events: none;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+    }
+    h1 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(2.1rem, 3vw, 2.6rem);
+      letter-spacing: -0.03em;
+    }
+    .tagline {
+      margin: 0 0 1.5rem;
+      font-size: 1rem;
+      color: rgba(15,23,42,0.8);
+      max-width: 32rem;
+    }
+    @media (prefers-color-scheme: dark) {
+      .tagline {
+        color: rgba(229,231,235,0.78);
+      }
+    }
+    .section-title {
+      margin: 1.75rem 0 0.75rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(15,23,42,0.6);
+    }
+    @media (prefers-color-scheme: dark) {
+      .section-title {
+        color: rgba(148,163,184,0.88);
+      }
+    }
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      text-decoration: none;
+      color: inherit;
+      padding: 0.55rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition:
+        background 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.12s ease,
+        box-shadow 0.18s ease,
+        color 0.18s ease;
+      box-shadow:
+        0 10px 30px rgba(15,23,42,0.08),
+        0 0 0 0 rgba(59,130,246,0);
+    }
+    .social-link:hover {
+      background: rgba(248,250,252,0.98);
+      border-color: rgba(59,130,246,0.75);
+      transform: translateY(-1px) translateZ(0);
+      box-shadow:
+        0 16px 40px rgba(15,23,42,0.16),
+        0 0 0 1px rgba(59,130,246,0.16);
+    }
+    .social-link:active {
+      transform: translateY(0);
+      box-shadow:
+        0 8px 20px rgba(15,23,42,0.12),
+        0 0 0 0 rgba(59,130,246,0.16);
+    }
+
+    .social-icon {
+      width: 22px;
+      height: 22px;
+      display: block;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 0 0 1px rgba(148,163,184,0.35);
+    }
+    .social-icon img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      filter: none;
+    }
+
+    .social-name {
+      font-size: 0.92rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+    .handle {
+      font-size: 0.8rem;
+      opacity: 0.75;
+    }
+    footer {
+      margin-top: 2.25rem;
+      font-size: 0.82rem;
+      color: rgba(100,116,139,0.95);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 1.25rem;
+      }
+      .container {
+        padding: 1.75rem 1.5rem 2rem;
+        border-radius: 20px;
+      }
+      .social-links {
+        gap: 0.65rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container" aria-label="Visitenkarte von Rüdiger Erdmann">
+    <div class="content">
+      <header>
+        <h1>Rüdiger Erdmann</h1>
+        <p class="tagline">
+          
+        </p>
+      </header>
+
+      <section aria-label="Online Profile">
+        <h2 class="section-title">Online Profile</h2>
+        <div class="social-links">
+          <!-- Bluesky -->
+          <a
+            class="social-link"
+            href="https://bsky.app/profile/ruediger.me"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="social-icon">
+              <img
+                src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/bluesky.svg"
+                alt="Bluesky Logo"
+              >
+            </span>
+            <span class="social-name">
+              Bluesky
+              <span class="handle">@ruediger.me</span>
+            </span>
+          </a>
+
+          <!-- X -->
+          <a
+            class="social-link"
+            href="https://x.com/RuedigerErdmann"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="social-icon">
+              <img
+                src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/x.svg"
+                alt="X Logo"
+              >
+            </span>
+            <span class="social-name">
+              X
+              <span class="handle">@RuedigerErdmann</span>
+            </span>
+          </a>
+
+          <!-- Facebook -->
+          <a
+            class="social-link"
+            href="https://www.facebook.com/RuedigerErdmann"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="social-icon">
+              <img
+                src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/facebook.svg"
+                alt="Facebook Logo"
+              >
+            </span>
+            <span class="social-name">
+              Facebook
+              <span class="handle">/RuedigerErdmann</span>
+            </span>
+          </a>
+
+          <!-- GitHub -->
+          <a
+            class="social-link"
+            href="https://github.com/RuedigerErdmann"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="social-icon">
+              <img
+                src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg"
+                alt="GitHub Logo"
+              >
+            </span>
+            <span class="social-name">
+              GitHub
+              <span class="handle">@RuedigerErdmann</span>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <footer>
+        <span>© <span id="year"></span> Rüdiger Erdmann</span>
+       </footer>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
