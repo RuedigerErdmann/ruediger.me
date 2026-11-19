@@ -4,6 +4,77 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ruediger.me</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+    canvas { display: block; width: 100vw; height: 100vh; }
+  </style>
 </head>
-<body></body>
+<body>
+  <canvas id="sky"></canvas>
+  <script>
+    const canvas = document.getElementById('sky');
+    const ctx = canvas.getContext('2d');
+    const COUNT = 600;   // Anzahl Sterne
+    const SPEED = 0.6;   // Fluggeschwindigkeit
+    let w, h, cx, cy, stars = [];
+
+    function resize() {
+      const dpr = window.devicePixelRatio || 1;
+      w = window.innerWidth; h = window.innerHeight;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      cx = w / 2; cy = h / 2;
+    }
+
+    function spawn(s, anywhere) {
+      s.x = (Math.random() - 0.5) * w * 2;
+      s.y = (Math.random() - 0.5) * h * 2;
+      s.z = anywhere ? Math.random() * w : w;
+      s.pz = s.z;
+      return s;
+    }
+
+    function project(x, y, z) {
+      return [cx + (x / z) * cx, cy + (y / z) * cy];
+    }
+
+    function frame(dt) {
+      // leichter Nachzieh-Effekt wie bei alten Bildschirmschonern
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.35)';
+      ctx.fillRect(0, 0, w, h);
+
+      const step = SPEED * dt;
+      for (const s of stars) {
+        s.pz = s.z;
+        s.z -= step;
+        if (s.z < 1) { spawn(s, false); continue; }
+
+        const [x, y] = project(s.x, s.y, s.z);
+        const [px, py] = project(s.x, s.y, s.pz);
+        if (x < 0 || x > w || y < 0 || y > h) { spawn(s, false); continue; }
+
+        const t = 1 - s.z / w;               // 0 = fern, 1 = nah
+        const shade = Math.floor(80 + 175 * t);
+        ctx.strokeStyle = `rgb(${shade}, ${shade}, ${shade})`;
+        ctx.lineWidth = Math.max(0.5, t * 3);
+        ctx.beginPath();
+        ctx.moveTo(px, py);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+      }
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    for (let i = 0; i < COUNT; i++) stars.push(spawn({}, true));
+
+    let last = performance.now();
+    function loop(now) {
+      const dt = Math.min(50, now - last); last = now;
+      frame(dt);
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  </script>
+</body>
 </html>
